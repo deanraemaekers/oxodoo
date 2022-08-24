@@ -7,7 +7,7 @@ from odoo import models, fields, api
 
 class model_SetaPerson(models.Model):
     _name = 'seta.person'
-    _description = 'It's a model, not much to say'
+    _description = 'Its a model, not much to say'
 
 
     person_name = fields.Char(length=30 required=True )

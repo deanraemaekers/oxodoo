@@ -38,3 +38,21 @@
               }
           </field>
       </record>
+<record id="seta.person_form" model="ir.ui.view">
+              <field name="name">Fake SETA Person List</field>
+              <field name="model">seta.person</field>
+              <field name="arch" type="xml">
+                    <form modifiers="{}">
+                       <button name='do_something' type='object' string='Something Button Clicker'/>
+<field name="person_name"/>
+<field name="person_last_name"/>
+<field name="person_identification_number"/>
+
+                    </form>
+              </field>
+        </record>
+<menuitem name="seta.person" id="seta.person.menu_root"/>
+
+      <menuitem name="The Persons Menu" id="seta.person.menu_1" parent="seta.person.menu_root"/>
+
+    

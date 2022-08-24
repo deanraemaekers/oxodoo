@@ -15,7 +15,7 @@ Ideally the description would be here
 :Name: seta.person
 :FileName: seta_person.py
 :Class: SetaPerson
-:Description: It's a model, not much to say
+:Description: Its a model, not much to say
 :END:
 *** person_name
 :PROPERTIES:
@@ -99,3 +99,61 @@ Ideally the description would be here
 :ID: seta_person.person_menu
 :Parent: seta_person.menu_root
 
+
+* seta.organisation
+The Organisation Module. Does what an Organisation Module does.
+:PROPERTIES:
+:Summary: Org module stu 
+:Folder: fake_seta_organisation
+:Website: https://www.duckduckgo.com
+:Depends: ['base', 'person']
+:END:
+** seta.organisations
+:PROPERTIES:
+:ModelType: Model
+:Name: seta.organisations
+:FileName: seta_organisation.py
+:Class: SetaOrganisations
+:Description: Bunch of organisations 
+:END:
+*** company_name
+:PROPERTIES:
+:FieldName: company_name 
+:FieldType: Char
+:MaxLength: 50
+:Required: True
+:END:
+*** sdl_no
+:PROPERTIES:
+:FieldName: sdl_no 
+:FieldType: Char
+:MaxLength: 30
+:Required: True
+:END:
+*** org_rep_id
+:PROPERTIES:
+:FieldName: org_rep_id
+:FieldType: Many2one
+:RelatedModel: seta.organisation.rep 
+:END:
+** seta.organisation.rep
+:PROPERTIES:
+:ModelType: Model
+:Name: seta.organisation.rep
+:FileName: seta_organisation_rep.py
+:Class: SetaOrganisationRep
+:Description: Bunch of organisation reps 
+:END:
+*** org_id
+:PROPERTIES:
+:FieldName: org_id 
+:FieldType: Many2one
+:RelatedModel: seta.organisations 
+:END:
+*** person_id 
+:PROPERTIES:
+:FieldName: person_id
+:FieldType: Many2one 
+:RelatedModel: seta.person 
+:RelatedModule: seta.person 
+:END:

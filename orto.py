@@ -151,10 +151,15 @@ def fchange(folder):
     return
 
 
+try:
+    os.rmdir(proj)
+except:
+    pass
+
 fcreate(proj)
 fchange(proj)
 
-for module in root.children[0]:
+for module in root.children:
     moduledescription = str(module.body)
     properties = module._properties
     if "Summary" in properties:
@@ -181,6 +186,7 @@ for module in root.children[0]:
         with open("__init__.py", "w") as f:
             f.write(moduleinit)
 
+    fcreate(root_path + "/" + modulefolder)
     fcreate(root_path + "/" + modulefolder + "/" + "models")
     fchange(root_path + "/" + modulefolder + "/" + "models")
     for model in module.children:
@@ -206,17 +212,26 @@ for module in root.children[0]:
 
             for field in model.children:
                 properties = field._properties
+                fieldrequired = ""
+                fieldmaxlength = ""
+                fieldrelatedmodel = ""
                 if "FieldName" in properties:
                     fieldname = properties["FieldName"]
                     fieldtype = properties["FieldType"]
-                    fieldmaxlength = properties["MaxLength"]
-                    fieldrequired = properties["Required"]
+                    if fieldtype == "Many2one":
+                        fieldrelatedmodel = properties["RelatedModel"]
+                    if "MaxLength" in properties:
+                        fieldmaxlength = properties["MaxLength"]
+                    if "Required" in properties:
+                        fieldrequired = properties["Required"]
                     fieldmetadata = ""
 
                     if fieldmaxlength:
                         fieldmetadata += f"length={fieldmaxlength} "
                     if fieldrequired:
                         fieldmetadata += f"required=True "
+                    if fieldrelatedmodel:
+                        fieldmetadata += f"'{fieldrelatedmodel}'"
 
                     field_actual = (
                         f"    {fieldname} = fields.{fieldtype}({fieldmetadata})\n"
@@ -275,7 +290,7 @@ for module in root.children[0]:
                                 with open("views.xml", "a+") as f:
                                     f.write(sub_menu_built)
                             else:
-                                root_menu_built = build_root_menu(menuname)
+                                root_menu_built = build_root_menu(modelname)
 
                                 fchange(root_path + "/" + modulefolder + "/" + "views")
                                 with open("views.xml", "a+") as f:
