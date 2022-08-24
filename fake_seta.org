@@ -1,0 +1,78 @@
+#+TITLE: fake_seta
+#+AUTHOR: Systems Research Lab
+
+* seta.person
+Ideally the description would be here
+:PROPERTIES:
+:Summary: To summarize, this is what it is
+:Folder: fake_seta_person
+:Website: https://www.duckduckgo.com
+:Depends: ['base']
+:END:
+** seta.person
+:PROPERTIES:
+:ModelType: Model
+:Name: seta.person
+:FileName: seta_person.py
+:Class: SetaPerson
+:Description: It's a model, not much to say
+:END:
+*** person_name
+:PROPERTIES:
+:FieldName: person_name
+:FieldType: Char
+:MaxLength: 30
+:Required: True
+:END:
+*** person_last_name
+:PROPERTIES:
+:FieldName: person_last_name
+:FieldType: Char
+:MaxLength: 30
+:Required: True
+:END:
+*** person_identification_number
+:PROPERTIES:
+:FieldName: person_identification_number
+:FieldType: Char
+:MaxLength: 20
+:Required: True
+:END:
+
+
+
+
+
+*** views
+:PROPERTIES:
+:Holder: Views
+:END:
+**** person_list
+:PROPERTIES:
+:ViewType: Tree
+:ViewMode: tree,form
+:ID: seta_person_list
+:Name: Fake SETA Person List
+:END:
+***** Tree
+****** person_name
+:PROPERTIES:
+:Name: person_name
+
+****** person_last_name
+:PROPERTIES:
+:Name: person_last_name
+****** person_identification_number
+:PROPERTIES:
+:Name: person_identification_number
+*** menuitems
+**** Top Menu
+:PROPERTIES:
+:Name: The Top Menu
+:ID: seta_person.menu_root
+**** Person Menu
+:PROPERTIES:
+:Name: The Persons Menu
+:ID: seta_person.person_menu
+:Parent: seta_person.menu_root
+

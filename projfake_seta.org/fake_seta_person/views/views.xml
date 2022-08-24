@@ -1,0 +1,40 @@
+<odoo>
+  <data>
+    
+
+<!-- tree view for Fake SETA Person List -->
+
+        <record model="ir.ui.view" id="seta_person_list">
+            <field name="name">Fake SETA Person List</field>
+            <field name="model">seta.person</field>
+            <field name="arch" type="xml">
+
+            <tree>
+                <field name='person_name'/>
+                <field name='person_last_name'/>
+                <field name='person_identification_number'/>
+            </tree>
+        </record>
+<!-- actions opening views on models -->
+      
+      <record model="ir.actions.act_window" id="seta.person.action_window">
+          <field name="name">seta.person window</field>
+          <field name="res_model">fake_seta_person.seta.person</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+
+
+    <!-- server action to the one above -->
+      
+      <record model="ir.actions.server" id="seta.person.action_server">
+          <field name="name">seta.person server</field>
+          <field name="model_id" ref="fake_seta_person.seta.person"/>
+          <field name="state">code</field>
+          <field name="code">
+              action = {
+              "type": "ir.actions.act_window",
+              "view_mode": "tree,form",
+              "res_model": model._name,
+              }
+          </field>
+      </record>

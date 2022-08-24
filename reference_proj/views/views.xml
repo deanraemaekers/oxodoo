@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+      
+      <record model="ir.ui.view" id="model_name_replace_list">
+          <field name="name">name_of_model_name_replace_list</field>
+          <field name="model">module_name_replace.model_name_replace</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="field_name_replace"/>
+                  <!-- <field name="field_name_replace_2"/>
+                       <field name="field_name_replace_3"/> -->
+              </tree>
+          </field>
+      </record>
+
+
+    <!-- actions opening views on models -->
+      
+      <record model="ir.actions.act_window" id="model_name_replace.action_window">
+          <field name="name">model_name_replace window</field>
+          <field name="res_model">module_name_replace.model_name_replace</field>
+          <field name="view_mode">tree,form</field>
+      </record>
+
+
+    <!-- server action to the one above -->
+      
+      <record model="ir.actions.server" id="model_name_replace.action_server">
+          <field name="name">model_name_replace server</field>
+          <field name="model_id" ref="module_name_replace.model_name_replace"/>
+          <field name="state">code</field>
+          <field name="code">
+              action = {
+              "type": "ir.actions.act_window",
+              "view_mode": "tree,form",
+              "res_model": model._name,
+              }
+          </field>
+      </record>
+
+
+    <!-- Top menu item -->
+      
+      <menuitem name="module_name_replace" id="module_name_replace.menu_root"/>
+
+      <!-- menu categories -->
+      
+      <menuitem name="Menu 1" id="model_name_replace.menu_1" parent="model_name_replace.menu_root"/>
+      <menuitem name="Menu 2" id="model_name_replace.menu_2" parent="model_name_replace.menu_root"/>
+
+      <!-- actions -->
+      
+      <menuitem name="List" id="module_name_replace.menu_1_list" parent="module_name_replace.menu_1"
+                action="module_name_replace.action_window"/>
+      <menuitem name="Server to list" id="module_name_replace" parent="module_name_replace.menu_2"
+                action="module_name_replace.action_server"/>
+
+  </data>
+</odoo>
