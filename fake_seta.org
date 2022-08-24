@@ -65,7 +65,30 @@ Ideally the description would be here
 ****** person_identification_number
 :PROPERTIES:
 :Name: person_identification_number
+***** Form
+:PROPERTIES:
+:ViewType: Form 
+:ViewMode: tree,form
+:ID: seta_person_form
+:Name: Fake SETA Person Form
+:END:
+****** button_do_something
+:PROPERTIES:
+:Name: do_something
+:String: Something Button Clicker
+****** person_name
+:PROPERTIES:
+:Name: person_name
+
+****** person_last_name
+:PROPERTIES:
+:Name: person_last_name
+****** person_identification_number
+:PROPERTIES:
+:Name: person_identification_number
 *** menuitems
+:PROPERTIES:
+:MenuHolder: Views
 **** Top Menu
 :PROPERTIES:
 :Name: The Top Menu
