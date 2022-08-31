@@ -1,0 +1,76 @@
+* Person
+Description - it's the person module, all about persons
+:PROPERTIES:
+:Name: Person
+:ExportType: Module
+:Summary: Person module guy
+:END:
+** Person
+Person model - thing that contains the person data
+:PROPERTIES:
+:ExportType: Model
+:END:
+*** Fields
+**** First Name
+:PROPERTIES:
+:ExportType: Field
+:FieldType: Char
+:MaxLength: 50
+:END:
+**** Last Name
+:PROPERTIES:
+:ExportType: Field
+:FieldType: Char
+:MaxLength: 50
+:END:
+**** Phone Number
+:PROPERTIES:
+:ExportType: Field
+:FieldType: Integer 
+:MaxLength: 20 
+:END:
+**** Identification Type
+:PROPERTIES:
+:ExportType: Field 
+:FieldType: Many2one
+:RelatedModel: Identification Types
+:END:
+**** Identification Number
+:PROPERTIES:
+:ExportType: Field 
+:FieldType: Char 
+:END:
+
+* Organisaton
+Description - it's the organisation module, all about organisations
+:PROPERTIES:
+:Name: Organisation
+:ExportType: Module
+:Summary: Organisation module guy
+:END:
+** Organisation 
+Organisation model - thing that contains the organisation data
+:PROPERTIES:
+:ExportType: Model
+:END:
+*** Fields
+**** Name
+:PROPERTIES:
+:ExportType: Field
+:FieldType: Char
+**** Vertical
+:PROPERTIES:
+:ExportType: Field
+:FieldType: Selection
+:Selectors: Banking, Cow Milking, Education
+**** Representitive ID
+:ExportType: Field
+:FieldType: One2many
+:InverseField: Organisation ID
+:RelatedModel: Organisation Representitives
+:END:
+** Organisation Representitives 
+Org representative models model - thing that contains the org rep data
+:PROPERTIES:
+:ExportType: Model
+:END:
